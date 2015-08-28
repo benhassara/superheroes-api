@@ -1,4 +1,5 @@
 // *** main dependencies *** //
+require('./database')
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,6 +11,8 @@ var swig = require('swig');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
+var users = require('./routes/users');
+var api = require('./routes/api');
 
 
 // *** express instance *** //
@@ -36,6 +39,8 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 // *** main routes *** //
 app.use('/', routes);
+app.use('/users', users);
+app.use('/api', api);
 
 
 // catch 404 and forward to error handler
